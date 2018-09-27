@@ -2,6 +2,7 @@ from pygame.math import Vector2
 
 maxwind = 50
 
+##def windforce(pointa, pointb):
 def wind(pointa, pointb):
     global maxwind
     wind = pointb - pointa

@@ -2,7 +2,7 @@ from pygame.math import Vector2
 import pgzero.actor as Actor
 import steering_forces
 
-wind = Vector2()
+windLocation = Vector2()
 
 class Character():
     def __init__(self, imagename):
@@ -10,6 +10,7 @@ class Character():
         self.vel = Vector2(0, 0)    
         self.heading = Vector2()
         self.imagename = imagename
+        self.mass = 1.0
         
 
     def draw(self, layer):
@@ -17,15 +18,21 @@ class Character():
 
 
     def update(self):
-        self.vel += wind
+        ##Need to get windforce from wind pos and mario pos
+        ##self.vel += wind
+        currentwindforce = self.pos - windLocation
+        accel = currentwindforce / self.mass
+        print ('currentwindforce =', currentwindforce)
+        self.vel += accel
         self.vel *= .898989899
         self.pos += self.vel 
-        self.setwind(Vector2())       
+        self.setwindLocation(Vector2(self.pos))
+        print ("Mario's Vel =", self.vel)
         
 
-    def setwind(self, force):
-       global wind
-       wind = force
+    def setwindLocation(self, aPosition):
+       global windLocation
+       windLocation = aPosition
 
 
 

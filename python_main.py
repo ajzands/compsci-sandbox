@@ -6,7 +6,8 @@ import steering_forces
 didClick = False
 mario = character.Character('character1')
 mario.pos = (600, 600)
-clickPos = (0, 0)
+clickPos = mario.pos
+mario.setwindLocation(Vector2(600, 600))
 WIDTH = 1200
 HEIGHT = 1200
 midscreen = Vector2(0.5 * WIDTH, 0.5 * HEIGHT)
@@ -27,15 +28,15 @@ def update():
     if didClick:
         didClick = False
         ##Compute wind
-        wind = steering_forces.wind(midscreen, clickPos)
-        ##set wind.pos = clickPos
-        print ('wind =', wind)
+##        wind = steering_forces.wind(midscreen, clickPos)
+        mario.setwindLocation(clickPos)
+        print ('wind Location =', clickPos)
         ##set wind
-        print ('You Clicked', clickPos)
-        mario.setwind(wind)
+##        print ('You Clicked', clickPos)
+
         
     mario.update()
-    print ("Mario's Position =", mario.pos)
+    ##print ("Mario's Position =", mario.pos)
         
 
 pgzrun.go()
