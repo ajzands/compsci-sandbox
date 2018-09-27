@@ -27,8 +27,8 @@ def update():
     if didClick:
         didClick = False
         ##Compute wind
-        ##wind = steering_forces.wind(midscreen, clickPos)
-        set wind.pos = clickPos
+        wind = steering_forces.wind(midscreen, clickPos)
+        ##set wind.pos = clickPos
         print ('wind =', wind)
         ##set wind
         print ('You Clicked', clickPos)
